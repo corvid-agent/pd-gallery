@@ -27,11 +27,11 @@ import { RouterLink } from '@angular/router';
           </div>
           <div class="footer__nav-col footer__ecosystem">
             <h4 class="footer__nav-heading">Ecosystem</h4>
-            <a href="https://corvid-agent.github.io/" target="_blank" rel="noopener">Home</a>
-            <a href="https://corvid-agent.github.io/bw-cinema/" target="_blank" rel="noopener">BW Cinema</a>
-            <a href="https://corvid-agent.github.io/pd-audiobooks/" target="_blank" rel="noopener">Audiobooks</a>
-            <a href="https://corvid-agent.github.io/weather-dashboard/" target="_blank" rel="noopener">Weather</a>
-            <a href="https://corvid-agent.github.io/space-dashboard/" target="_blank" rel="noopener">Space</a>
+            <a href="https://corvid-agent.github.io/" target="_blank" rel="noopener">Home<span class="sr-only"> (opens in new tab)</span></a>
+            <a href="https://corvid-agent.github.io/bw-cinema/" target="_blank" rel="noopener">BW Cinema<span class="sr-only"> (opens in new tab)</span></a>
+            <a href="https://corvid-agent.github.io/pd-audiobooks/" target="_blank" rel="noopener">Audiobooks<span class="sr-only"> (opens in new tab)</span></a>
+            <a href="https://corvid-agent.github.io/weather-dashboard/" target="_blank" rel="noopener">Weather<span class="sr-only"> (opens in new tab)</span></a>
+            <a href="https://corvid-agent.github.io/space-dashboard/" target="_blank" rel="noopener">Space<span class="sr-only"> (opens in new tab)</span></a>
           </div>
         </nav>
         <div class="footer__departments">
@@ -78,6 +78,7 @@ import { RouterLink } from '@angular/router';
     .footer__credits { color: var(--text-tertiary); font-size: 0.85rem; margin: 0; }
     .footer__credits a { color: var(--text-secondary); }
     .footer__credits a:hover { color: var(--accent-gold); }
+    @media (max-width: 768px) { .footer { padding-bottom: 100px; } }
     @media (max-width: 480px) { .footer__nav { grid-template-columns: 1fr; gap: var(--space-md); } }
   `],
 })
