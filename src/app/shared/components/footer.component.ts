@@ -44,9 +44,9 @@ import { RouterLink } from '@angular/router';
         </div>
         <p class="footer__credits">
           Artwork data and images from the
-          <a href="https://www.artic.edu" target="_blank" rel="noopener">Art Institute of Chicago (opens in new tab)</a>
+          <a href="https://www.artic.edu" target="_blank" rel="noopener">Art Institute of Chicago<span class="sr-only"> (opens in new tab)</span></a>
           via their
-          <a href="https://api.artic.edu/docs/" target="_blank" rel="noopener">public API</a>.
+          <a href="https://api.artic.edu/docs/" target="_blank" rel="noopener">public API<span class="sr-only"> (opens in new tab)</span></a>.
           All featured artworks are in the public domain.
         </p>
       </div>

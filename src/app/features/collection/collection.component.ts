@@ -17,12 +17,14 @@ type Tab = 'favorites' | 'history' | 'curations';
     <div class="collection container">
       <h1>My Collection</h1>
 
-      <div class="collection__tabs" role="tablist">
+      <div class="collection__tabs" role="tablist" aria-label="Collection tabs">
         <button
           class="collection__tab"
           [class.active]="activeTab() === 'favorites'"
           (click)="setTab('favorites')"
           role="tab"
+          id="tab-favorites"
+          aria-controls="panel-favorites"
           [attr.aria-selected]="activeTab() === 'favorites'"
         >
           Favorites ({{ collection.favorites().length }})
@@ -32,6 +34,8 @@ type Tab = 'favorites' | 'history' | 'curations';
           [class.active]="activeTab() === 'history'"
           (click)="setTab('history')"
           role="tab"
+          id="tab-history"
+          aria-controls="panel-history"
           [attr.aria-selected]="activeTab() === 'history'"
         >
           Recently Viewed ({{ collection.viewHistory().length }})
@@ -41,6 +45,8 @@ type Tab = 'favorites' | 'history' | 'curations';
           [class.active]="activeTab() === 'curations'"
           (click)="setTab('curations')"
           role="tab"
+          id="tab-curations"
+          aria-controls="panel-curations"
           [attr.aria-selected]="activeTab() === 'curations'"
         >
           My Curations ({{ collection.curations().length }})
@@ -48,33 +54,39 @@ type Tab = 'favorites' | 'history' | 'curations';
       </div>
 
       @if (activeTab() === 'favorites') {
+        <div role="tabpanel" id="panel-favorites" aria-labelledby="tab-favorites">
         @if (loading()) {
           <app-skeleton-grid [count]="6" />
         } @else if (favoriteArtworks().length === 0) {
-          <div class="collection__empty">
+          <div class="collection__empty" role="status">
             <p>No favorites yet. Browse artworks and tap the heart to add favorites.</p>
           </div>
         } @else {
           <app-artwork-grid [artworks]="favoriteArtworks()" />
         }
+        </div>
       }
 
       @if (activeTab() === 'history') {
+        <div role="tabpanel" id="panel-history" aria-labelledby="tab-history">
         @if (loading()) {
           <app-skeleton-grid [count]="6" />
         } @else if (historyArtworks().length === 0) {
-          <div class="collection__empty">
+          <div class="collection__empty" role="status">
             <p>No recently viewed artworks yet. Start browsing to build your history.</p>
           </div>
         } @else {
           <app-artwork-grid [artworks]="historyArtworks()" />
         }
+        </div>
       }
 
       @if (activeTab() === 'curations') {
-        <div class="collection__curations">
+        <div class="collection__curations" role="tabpanel" id="panel-curations" aria-labelledby="tab-curations">
           <div class="collection__create-curation">
+            <label for="curation-name-input" class="sr-only">New curation name</label>
             <input
+              id="curation-name-input"
               class="collection__curation-input"
               type="text"
               placeholder="New curation name..."
@@ -86,7 +98,7 @@ type Tab = 'favorites' | 'history' | 'curations';
           </div>
 
           @if (collection.curations().length === 0) {
-            <div class="collection__empty">
+            <div class="collection__empty" role="status">
               <p>No curations yet. Create a named collection to organize your favorite artworks.</p>
             </div>
           } @else {

@@ -5,7 +5,7 @@ import { NotificationService } from '../../core/services/notification.service';
   selector: 'app-toast-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="toasts" aria-live="polite">
+    <div class="toasts" aria-live="assertive" aria-atomic="false">
       @for (toast of notifications.toasts(); track toast.id) {
         <div class="toast" [class]="'toast--' + toast.type" role="alert">
           <span>{{ toast.message }}</span>

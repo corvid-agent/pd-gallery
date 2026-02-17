@@ -26,7 +26,7 @@ const DEPARTMENTS = [
       <h1 class="browse__title">Browse Artworks</h1>
       <div class="browse__controls">
         <form class="browse__search" (ngSubmit)="doSearch()" role="search">
-          <svg class="browse__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <svg class="browse__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input
             class="browse__search-input"
             type="search"
@@ -55,23 +55,23 @@ const DEPARTMENTS = [
       @if (catalog.loading()) {
         <app-skeleton-grid />
       } @else if (catalog.error()) {
-        <div class="browse__error">
+        <div class="browse__error" role="alert">
           <p>{{ catalog.error() }}</p>
           <button class="btn-primary" (click)="doSearch()">Retry</button>
         </div>
       } @else {
         @if (catalog.totalResults() > 0) {
-          <p class="browse__count">{{ catalog.totalResults() | number }} artworks found</p>
+          <p class="browse__count" role="status" aria-live="polite">{{ catalog.totalResults() | number }} artworks found</p>
         }
         <app-artwork-grid [artworks]="catalog.results()" />
         @if (catalog.results().length > 0 && hasMore()) {
-          <div class="browse__pagination">
+          <nav class="browse__pagination" aria-label="Pagination">
             @if (currentPage() > 1) {
               <button class="btn-secondary" (click)="prevPage()">Previous</button>
             }
-            <span class="browse__page-info">Page {{ currentPage() }}</span>
+            <span class="browse__page-info" aria-current="page">Page {{ currentPage() }}</span>
             <button class="btn-secondary" (click)="nextPage()">Next Page</button>
-          </div>
+          </nav>
         }
       }
     </div>

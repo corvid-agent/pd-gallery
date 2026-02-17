@@ -29,7 +29,7 @@ const ONBOARDING_KEY = 'pd-gallery-onboarded';
     <app-bottom-nav />
 
     @if (showOnboarding) {
-      <div class="onboarding-overlay" role="dialog" aria-label="Welcome">
+      <div class="onboarding-overlay" role="dialog" aria-modal="true" aria-label="Welcome">
         <div class="onboarding-panel">
           <h2 class="onboarding-title">Welcome to PD Gallery</h2>
           <p class="onboarding-text">Your gateway to over 130,000 public domain artworks. Here's what you can do:</p>
@@ -47,7 +47,7 @@ const ONBOARDING_KEY = 'pd-gallery-onboarded';
 
     @if (a11y.panelOpen()) {
       <div class="a11y-overlay" (click)="a11y.panelOpen.set(false)">
-        <aside class="a11y-panel" (click)="$event.stopPropagation()" role="dialog" aria-label="Accessibility settings">
+        <aside class="a11y-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Accessibility settings">
           <div class="a11y-header">
             <h2 class="a11y-title">Accessibility</h2>
             <button class="a11y-close" (click)="a11y.panelOpen.set(false)" aria-label="Close accessibility settings">&times;</button>
@@ -87,7 +87,7 @@ const ONBOARDING_KEY = 'pd-gallery-onboarded';
     }
 
     @if (shortcuts.helpOpen()) {
-      <div class="shortcuts-overlay" (click)="shortcuts.helpOpen.set(false)" role="dialog" aria-label="Keyboard shortcuts">
+      <div class="shortcuts-overlay" (click)="shortcuts.helpOpen.set(false)" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
         <div class="shortcuts-panel" (click)="$event.stopPropagation()">
           <div class="shortcuts-header">
             <h2 class="shortcuts-title">Keyboard Shortcuts</h2>

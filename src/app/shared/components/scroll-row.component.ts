@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewIni
   selector: 'app-scroll-row',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="scroll-row" #scrollContainer (scroll)="updateArrows()">
+    <div class="scroll-row" #scrollContainer (scroll)="updateArrows()" role="region" aria-label="Scrollable artwork row" tabindex="0">
       <ng-content />
     </div>
     @if (canScrollLeft()) {

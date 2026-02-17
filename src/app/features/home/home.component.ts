@@ -44,7 +44,7 @@ const CURATED_COLLECTIONS = [
     </section>
 
     <div class="container">
-      <section class="section" appReveal>
+      <section class="section" appReveal aria-label="Featured Works">
         <div class="section__header">
           <h2>Featured Works</h2>
         </div>
@@ -62,7 +62,7 @@ const CURATED_COLLECTIONS = [
       </section>
 
       @if (recentArtworks().length > 0) {
-        <section class="section" appReveal>
+        <section class="section" appReveal aria-label="Recently Viewed">
           <div class="section__header">
             <h2>Recently Viewed</h2>
           </div>
@@ -76,7 +76,7 @@ const CURATED_COLLECTIONS = [
         </section>
       }
 
-      <section class="section" appReveal>
+      <section class="section" appReveal aria-label="Browse by Department">
         <div class="section__header">
           <h2>Browse by Department</h2>
         </div>
@@ -89,7 +89,7 @@ const CURATED_COLLECTIONS = [
         </div>
       </section>
 
-      <section class="section" appReveal>
+      <section class="section" appReveal aria-label="Curated Collections">
         <div class="section__header">
           <h2>Curated Collections</h2>
         </div>
@@ -97,7 +97,7 @@ const CURATED_COLLECTIONS = [
           @for (c of curatedCollections; track c.name) {
             <a class="curation-card" [routerLink]="['/browse']" [queryParams]="{ q: c.query }">
               <span class="curation-card__name">{{ c.name }}</span>
-              <span class="curation-card__arrow">&rarr;</span>
+              <span class="curation-card__arrow" aria-hidden="true">&rarr;</span>
             </a>
           }
         </div>
