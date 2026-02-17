@@ -15,7 +15,7 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
     @if (catalog.loading()) {
       <app-loading-spinner />
     } @else if (catalog.error()) {
-      <div class="error container">
+      <div class="error container" role="alert">
         <p>{{ catalog.error() }}</p>
         <button class="btn-primary" (click)="load()">Retry</button>
       </div>
@@ -23,7 +23,7 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
       <div class="artwork container">
         <div class="artwork__layout">
           <div class="artwork__image-wrap">
-            @if (artwork.imageId) {
+            @if (artwork.imageId && !imageFailed()) {
               <img
                 class="artwork__image"
                 [src]="catalog.iiifUrl(artwork.imageId, 1686)"
@@ -32,7 +32,8 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
               />
             } @else {
               <div class="artwork__no-image">
-                <p>No image available</p>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <p>{{ artwork.title }}</p>
               </div>
             }
           </div>
@@ -60,7 +61,7 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
                 }
               </button>
               @if (artwork.imageId) {
-                <a class="btn-secondary artwork__action-btn" [href]="catalog.iiifUrl(artwork.imageId, 3000)" target="_blank" rel="noopener" aria-label="Download full resolution image">
+                <a class="btn-secondary artwork__action-btn" [href]="catalog.iiifUrl(artwork.imageId, 3000)" target="_blank" rel="noopener" aria-label="Download full resolution image (opens in new tab)">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                   Download
                 </a>
@@ -138,13 +139,19 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
   `,
   styles: [`
     .artwork { padding: var(--space-xl) var(--space-lg); }
-    .artwork__layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start; }
+    .artwork__layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start;
+      background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+    }
     .artwork__image-wrap { position: sticky; top: 80px; }
     .artwork__image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-artwork); }
     .artwork__no-image {
       aspect-ratio: 4/3; background: var(--bg-raised); border-radius: var(--radius-lg);
-      display: flex; align-items: center; justify-content: center; color: var(--text-tertiary);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-sm);
+      color: var(--text-tertiary); padding: var(--space-lg); text-align: center;
     }
+    .artwork__no-image p { margin: 0; font-size: 0.9rem; }
     .artwork__title { font-size: 2rem; margin: 0 0 var(--space-sm); }
     .artwork__artist { font-size: 1.1rem; color: var(--text-secondary); margin: 0 0 var(--space-xs); white-space: pre-line; }
     .artwork__date { font-size: 0.95rem; color: var(--text-tertiary); margin: 0 0 var(--space-lg); }
