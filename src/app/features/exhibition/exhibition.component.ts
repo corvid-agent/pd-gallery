@@ -53,12 +53,12 @@ const SUMMARY_FIELDS =
           <!-- Slideshow mode -->
           @if (slideshowMode()) {
             <div class="slideshow" (click)="nextSlide()" (keydown.ArrowRight)="nextSlide()" (keydown.ArrowLeft)="prevSlide()" (keydown.Escape)="slideshowMode.set(false)" tabindex="0">
-              <button class="slideshow__close" (click)="slideshowMode.set(false); $event.stopPropagation()">
+              <button class="slideshow__close" (click)="slideshowMode.set(false); $event.stopPropagation()" aria-label="Close slideshow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
               </button>
-              <div class="slideshow__nav slideshow__nav--left" (click)="prevSlide(); $event.stopPropagation()">
+              <button class="slideshow__nav slideshow__nav--left" (click)="prevSlide(); $event.stopPropagation()" aria-label="Previous slide">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-              </div>
+              </button>
               @if (currentSlide(); as slide) {
                 <img
                   class="slideshow__img"
@@ -73,9 +73,9 @@ const SUMMARY_FIELDS =
                 </div>
                 <div class="slideshow__counter">{{ slideIndex() + 1 }} / {{ galleryArtworks().length }}</div>
               }
-              <div class="slideshow__nav slideshow__nav--right" (click)="nextSlide(); $event.stopPropagation()">
+              <button class="slideshow__nav slideshow__nav--right" (click)="nextSlide(); $event.stopPropagation()" aria-label="Next slide">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-              </div>
+              </button>
             </div>
           }
 
@@ -183,10 +183,10 @@ const SUMMARY_FIELDS =
                   <p>{{ ex.artworkIds.length }} artwork{{ ex.artworkIds.length !== 1 ? 's' : '' }}</p>
                 </div>
                 <div class="exhibition-card__actions" (click)="$event.stopPropagation()">
-                  <button class="btn-icon" (click)="shareExhibition(ex)" title="Share">
+                  <button class="btn-icon" (click)="shareExhibition(ex)" title="Share" aria-label="Share exhibition">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
                   </button>
-                  <button class="btn-icon btn-danger" (click)="deleteExhibition(ex.id)" title="Delete">
+                  <button class="btn-icon btn-danger" (click)="deleteExhibition(ex.id)" title="Delete" aria-label="Delete exhibition">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                   </button>
                 </div>
@@ -279,7 +279,7 @@ const SUMMARY_FIELDS =
     .exhibit__back:hover { color: var(--text-primary); }
     .exhibit__title { flex: 1; font-size: 1.5rem; margin: 0; color: var(--text-primary); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .exhibit__controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md); }
-    .exhibit__count { font-size: 0.85rem; color: var(--text-tertiary); }
+    .exhibit__count { font-size: 0.875rem; color: var(--text-tertiary); }
     .exhibit__grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: var(--space-md);
@@ -293,13 +293,13 @@ const SUMMARY_FIELDS =
     .exhibit__card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
     .exhibit__card-placeholder {
       width: 100%; aspect-ratio: 4/3; background: var(--bg-raised); display: flex;
-      align-items: center; justify-content: center; color: var(--text-tertiary); font-size: 0.85rem;
+      align-items: center; justify-content: center; color: var(--text-tertiary); font-size: 0.875rem;
     }
     .exhibit__card-info { padding: var(--space-sm) var(--space-md); }
-    .exhibit__card-info h3 { font-size: 0.85rem; margin: 0 0 2px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .exhibit__card-info p { font-size: 0.75rem; color: var(--text-tertiary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .exhibit__card-info h3 { font-size: 0.875rem; margin: 0 0 2px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .exhibit__card-info p { font-size: 0.875rem; color: var(--text-tertiary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .exhibit__card-remove {
-      position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; border-radius: 50%;
+      position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 50%;
       background: rgba(0,0,0,0.6); border: none; color: #fff; font-size: 1.1rem;
       display: flex; align-items: center; justify-content: center; cursor: pointer;
       opacity: 0; transition: opacity 0.2s;
@@ -326,15 +326,15 @@ const SUMMARY_FIELDS =
     }
     .slideshow__info h2 { font-size: 1.3rem; margin: 0 0 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
     .slideshow__info p { font-size: 0.9rem; margin: 0; opacity: 0.8; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-    .slideshow__date { font-size: 0.8rem !important; opacity: 0.6 !important; }
+    .slideshow__date { font-size: 0.875rem !important; opacity: 0.6 !important; }
     .slideshow__counter {
       position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-      color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 600;
+      color: rgba(255,255,255,0.6); font-size: 0.875rem; font-weight: 600;
     }
     .slideshow__nav {
       position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 64px;
       display: flex; align-items: center; justify-content: center; cursor: pointer;
-      color: rgba(255,255,255,0.5); transition: color 0.2s;
+      color: rgba(255,255,255,0.5); transition: color 0.2s; border: none; background: none; padding: 0;
     }
     .slideshow__nav:hover { color: #fff; }
     .slideshow__nav--left { left: 16px; }
@@ -343,7 +343,7 @@ const SUMMARY_FIELDS =
     /* Shared exhibition */
     .shared-exhibit { margin-bottom: var(--space-2xl); padding: var(--space-lg); background: var(--bg-surface); border: 1px solid var(--accent-gold-dim, var(--border)); border-radius: var(--radius-lg); }
     .shared-exhibit__title { font-size: 1.3rem; margin: 0 0 var(--space-xs); color: var(--accent-gold); }
-    .shared-exhibit__hint { font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 var(--space-md); }
+    .shared-exhibit__hint { font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 var(--space-md); }
 
     @media (max-width: 768px) {
       .exhibitions { padding: var(--space-lg) var(--space-md); }

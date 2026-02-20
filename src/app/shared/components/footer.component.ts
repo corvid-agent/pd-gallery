@@ -64,19 +64,19 @@ import { RouterLink } from '@angular/router';
       display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
       max-width: 480px; margin: 0 auto var(--space-xl); text-align: left;
     }
-    .footer__nav-heading { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); font-weight: 600; margin: 0 0 var(--space-sm); }
+    .footer__nav-heading { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); font-weight: 600; margin: 0 0 var(--space-sm); }
     .footer__nav-col { display: flex; flex-direction: column; gap: var(--space-xs); }
-    .footer__nav-col a { font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .footer__nav-col a { font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
     .footer__nav-col a:hover { color: var(--accent-gold); }
     .footer__departments { max-width: 600px; margin: 0 auto var(--space-xl); text-align: center; }
     .footer__departments .footer__nav-heading { margin-bottom: var(--space-md); }
     .footer__dept-links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); }
     .footer__dept-link {
-      font-size: 0.8rem; padding: 4px 12px; border: 1px solid var(--border); border-radius: 14px;
-      color: var(--text-tertiary); text-decoration: none; transition: all 0.2s;
+      font-size: 0.875rem; padding: 6px 14px; border: 1px solid var(--border); border-radius: 14px;
+      color: var(--text-tertiary); text-decoration: none; transition: all 0.2s; min-height: 44px; display: inline-flex; align-items: center;
     }
     .footer__dept-link:hover { border-color: var(--accent-gold); color: var(--accent-gold); background-color: var(--accent-gold-dim); }
-    .footer__credits { color: var(--text-tertiary); font-size: 0.85rem; margin: 0; }
+    .footer__credits { color: var(--text-tertiary); font-size: 0.875rem; margin: 0; }
     .footer__credits a { color: var(--text-secondary); }
     .footer__credits a:hover { color: var(--accent-gold); }
     @media (max-width: 768px) { .footer { padding-bottom: 100px; } }

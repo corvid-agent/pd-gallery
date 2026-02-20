@@ -36,7 +36,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     .bottom-nav__item {
       display: flex; flex-direction: column; align-items: center; gap: 2px;
       padding: 6px 12px; color: var(--text-tertiary); text-decoration: none;
-      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+      font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
       transition: color 0.2s; min-width: 56px; min-height: 44px; justify-content: center;
       border-radius: var(--radius);
     }

@@ -128,7 +128,7 @@ import type { ArtworkSummary } from '../../core/models/artwork.model';
       overflow: hidden;
     }
     .card__placeholder-artist {
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       color: var(--text-tertiary);
       font-style: italic;
     }
@@ -145,7 +145,7 @@ import type { ArtworkSummary } from '../../core/models/artwork.model';
     .card__genre {
       background-color: rgba(0, 0, 0, 0.75);
       color: var(--accent-gold);
-      font-size: 0.7rem;
+      font-size: 0.875rem;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: var(--radius-sm);
@@ -223,37 +223,22 @@ import type { ArtworkSummary } from '../../core/models/artwork.model';
     }
     .card__artist {
       color: var(--text-secondary);
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .card__date {
       color: var(--text-tertiary);
-      font-size: 0.75rem;
+      font-size: 0.875rem;
     }
     @media (max-width: 480px) {
-      .card__title { -webkit-line-clamp: 1; font-size: 0.8rem; }
-      .card__genre { font-size: 0.65rem; padding: 2px 6px; }
-      .card__action {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
-      }
+      .card__title { -webkit-line-clamp: 1; font-size: 0.875rem; }
+      .card__genre { padding: 2px 6px; }
       .card__info { padding: 6px 2px 2px; }
-      .card__artist { font-size: 0.7rem; }
-      .card__date { font-size: 0.65rem; }
     }
     @media (max-width: 360px) {
-      .card__title { font-size: 0.75rem; }
       .card__overlay { top: var(--space-xs); left: var(--space-xs); right: var(--space-xs); }
-      .card__action {
-        width: 28px;
-        height: 28px;
-        min-width: 28px;
-        min-height: 28px;
-      }
       .card__action svg { width: 12px; height: 12px; }
       .card__heart svg { width: 12px; height: 12px; }
     }
