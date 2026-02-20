@@ -33,6 +33,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/department/department.component').then((m) => m.DepartmentComponent),
   },
   {
+    path: 'exhibitions',
+    title: 'Exhibitions — PD Gallery',
+    loadComponent: () => import('./features/exhibition/exhibition.component').then((m) => m.ExhibitionComponent),
+  },
+  {
     path: 'about',
     title: 'About — PD Gallery',
     loadComponent: () => import('./features/about/about.component').then((m) => m.AboutComponent),
