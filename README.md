@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/preview.png" alt="pd-gallery preview" width="100%"></p>
+
 # PD Gallery
 
 Explore over 130,000 public domain artworks from the Art Institute of Chicago. Browse masterpieces, build personal collections, and discover art across departments — all in a beautiful gallery-themed interface.
