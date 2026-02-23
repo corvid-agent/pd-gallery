@@ -19,6 +19,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Typecheck
+        run: bunx tsc --noEmit -p tsconfig.app.json
+
       - name: Unit tests
         run: bun run test
 
